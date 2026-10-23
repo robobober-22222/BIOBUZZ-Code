@@ -27,7 +27,7 @@ public class AutoPathByMethods extends LinearOpMode {
     final double WHEEL_CIRCUMFERENCE = WHEEL_DIAMETER_CM * Math.PI;
     final double TICKS_PER_CM = MOTOR_TICKS / WHEEL_CIRCUMFERENCE;
 
-    static double speed_factor = 0.6;
+    static double speed_factor = 0.5;
     IMU imu;
 
     @Override
