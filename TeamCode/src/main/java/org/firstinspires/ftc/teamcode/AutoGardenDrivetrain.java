@@ -6,13 +6,15 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 @Autonomous(name = "Auto Test Improved")
 public class AutoGardenDrivetrain extends LinearOpMode {
 
+    // Refer to DrivetrainHardware class. Creates robot object to call for shared methods.
     private final DrivetrainHardware robot = new DrivetrainHardware();
 
-    public static final double SPEED_FACTOR = 0.6;
+    public static final double SPEED_FACTOR = 0.6; // Master constant for robot speed
 
     @Override
     public void runOpMode() {
 
+        // Connects the motors and IMU. Passing "this" gives the helper class access to this OpMode
         robot.init(hardwareMap, this);
 
         while (opModeInInit()) {
