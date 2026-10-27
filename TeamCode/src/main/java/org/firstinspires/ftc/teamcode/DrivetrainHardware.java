@@ -9,6 +9,8 @@ import com.qualcomm.robotcore.hardware.IMU;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 // Helper class that owns all drivetrain hardware and movement code.
+// It is not an OpMode, so it cannot be selected on the Driver Station.
+// An OpMode creates one of these and calls init() to set it up.
 public class DrivetrainHardware {
 
     // ==== Hardware declarations ====
@@ -68,7 +70,7 @@ public class DrivetrainHardware {
         // Reset all values to default before start
         imu.resetYaw();  // set the current heading to 0 degrees
         resetEncoders(); // reset and re-enable the encoders
-        stopMotors();    // make sure nothing is moving
+        stopMotors(); // make sure nothing is moving
     }
 
 
