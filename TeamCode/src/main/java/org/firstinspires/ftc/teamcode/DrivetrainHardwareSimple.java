@@ -83,6 +83,11 @@ public class DrivetrainHardwareSimple {
 
         resetEncoders();
 
+        power = Math.abs(power);
+        if(distance < 0 ){
+            power *= -1;
+        }
+
         leftFront.setPower(power);
         leftBack.setPower(power);
         rightFront.setPower(power);
@@ -103,6 +108,10 @@ public class DrivetrainHardwareSimple {
 
         imu.resetYaw();
 
+        power = Math.abs(power);
+        if(angle < 0 ){
+            power *= -1;
+        }
         // Left and right sides move in opposite directions.
 
         leftFront.setPower(power);
@@ -124,6 +133,11 @@ public class DrivetrainHardwareSimple {
     public void side(double distance, double power) {
 
         resetEncoders();
+
+        power = Math.abs(power);
+        if(distance < 0 ){
+            power *= -1;
+        }
 
 
         leftFront.setPower(power);
