@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public class AutoGardenDrivetrainSimple extends LinearOpMode {
 
 
-    DrivetrainHardwareSasha robot; // We here introduce a variable robot and connect it to our hardware class
+    DrivetrainHardwareSimple robot; // We here introduce a variable robot and connect it to our hardware class
     // Now we can use all the variables that we added in our drivetrain hardware
 
 
@@ -17,7 +17,7 @@ public class AutoGardenDrivetrainSimple extends LinearOpMode {
 
         // Connect and prepare the robot hardware.
 
-        robot = new DrivetrainHardwareSasha(this);
+        robot = new DrivetrainHardwareSimple(this);
         robot.initialize();
 
 

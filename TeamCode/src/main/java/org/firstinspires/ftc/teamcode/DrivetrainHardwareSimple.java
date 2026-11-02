@@ -89,9 +89,7 @@ public class DrivetrainHardwareSimple {
         rightBack.setPower(power);
 
 
-        while (opMode.opModeIsActive()
-                && Math.abs(leftFront.getCurrentPosition()) < distance * TICKS_PER_CM) {
-
+        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < distance * TICKS_PER_CM) {
             opMode.idle();
         }
 
