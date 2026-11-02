@@ -6,28 +6,20 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @Autonomous(name = "Auto Path By Methods")
 public class AutoGardenDrivetrainSimple extends LinearOpMode {
-
-
     DrivetrainHardwareSimple robot; // We here introduce a variable robot and connect it to our hardware class
     // Now we can use all the variables that we added in our drivetrain hardware
-
 
     @Override
     public void runOpMode() {
 
-        // Connect and prepare the robot hardware.
-
+        // Connect and prepare the robot hardware
         robot = new DrivetrainHardwareSimple(this);
         robot.initialize();
 
-
-
         waitForStart();
 
-
-
+        // ====== Auto Path ======
         if (opModeIsActive()) {
-
             robot.straight(20, 0.3);
             robot.rotate(90, 0.3);
             robot.straight(110, 0.3);
@@ -43,7 +35,6 @@ public class AutoGardenDrivetrainSimple extends LinearOpMode {
             sleep(500);
             robot.rotate(90, 0.3);
             robot.straight(90, 0.3);
-
         }
     }
 }

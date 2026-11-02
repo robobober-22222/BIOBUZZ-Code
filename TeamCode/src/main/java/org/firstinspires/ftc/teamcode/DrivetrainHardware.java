@@ -73,7 +73,6 @@ public class DrivetrainHardware {
         stopMotors(); // make sure nothing is moving
     }
 
-
     // ====== DRIVE STRAIGHT (forward or backward) ======
     // Negative distance drives backward. Power is always used as a magnitude.
     public void straight(double distance, double power) {
@@ -99,7 +98,6 @@ public class DrivetrainHardware {
         mode.sleep(250); // short pause so the robot settles
     }
 
-
     // ====== ROTATE BY DEGREE VALUE ======
     // Positive angle turns right, negative angle turns left.
     public void rotate(double angle, double power) {
@@ -124,7 +122,6 @@ public class DrivetrainHardware {
         mode.sleep(250);
     }
 
-    
     // ====== SIDE MOVEMENT ======
     // Strafes sideways a given distance in cm. Positive distance strafes right, negative strafes left.
     public void side(double distance, double power) {
