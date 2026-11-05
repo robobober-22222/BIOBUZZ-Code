@@ -1,5 +1,5 @@
 
-package org.firstinspires.ftc.teamcode.testing.driveTrain;
+package org.firstinspires.ftc.teamcode.testing.drivetrain;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
