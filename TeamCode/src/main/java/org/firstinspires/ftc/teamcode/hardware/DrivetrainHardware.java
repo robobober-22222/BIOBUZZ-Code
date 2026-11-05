@@ -62,7 +62,7 @@ public class DrivetrainHardware {
     }
 
     // ====== STRAIGHT DRIVE ======
-    public void straight(double distance, double power) {
+    public void driveStraight(double distance, double power) {
 
         resetEncoders();
 
@@ -80,7 +80,7 @@ public class DrivetrainHardware {
     }
 
     // ====== ROTATE DRIVE ======
-    public void rotate(double angle, double power) {
+    public void driveRotate(double angle, double power) {
 
         imu.resetYaw();
 
@@ -98,7 +98,7 @@ public class DrivetrainHardware {
         opMode.sleep(500);
     }
     // ====== STRAFE DRIVE ======
-    public void side(double distance, double power) {
+    public void driveSide(double distance, double power) {
         resetEncoders();
 
         power = Math.abs(power);
