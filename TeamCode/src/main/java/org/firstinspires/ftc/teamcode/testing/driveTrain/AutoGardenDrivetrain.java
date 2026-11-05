@@ -1,8 +1,10 @@
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.testing.driveTrain;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
+import org.firstinspires.ftc.teamcode.hardware.DrivetrainHardware;
 
 @Autonomous(name = "Auto Path By Methods")
 public class AutoGardenDrivetrain extends LinearOpMode {
