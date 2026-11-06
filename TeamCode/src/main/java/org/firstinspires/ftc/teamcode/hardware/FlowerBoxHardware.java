@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class FlowerBoxHardware {
     private DcMotor flowerBox;
-
+    // new change
     private Servo FlowerBoxTip;
 
     private LinearOpMode opMode; // This lets us use OpMode features like sleep()
