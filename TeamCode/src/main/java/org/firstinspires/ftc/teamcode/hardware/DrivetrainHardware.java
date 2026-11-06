@@ -72,7 +72,7 @@ public class DrivetrainHardware {
         }
         setDrivePower(power, power, power, power);
 
-        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < distance * TICKS_PER_CM) {
+        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < Math.abs(distance * TICKS_PER_CM)) {
             opMode.idle();
         }
         stopMotors();
@@ -91,7 +91,7 @@ public class DrivetrainHardware {
         // Left and right sides move in opposite directions
         setDrivePower(power, power, -power, -power);
 
-        while (opMode.opModeIsActive() && Math.abs(imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES)) < angle) {
+        while (opMode.opModeIsActive() && Math.abs(imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES)) < Math.abs(angle)) {
             opMode.idle();
         }
         stopMotors();
@@ -107,7 +107,7 @@ public class DrivetrainHardware {
         }
         setDrivePower(power, -power, -power, power);
 
-        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < distance * TICKS_PER_CM) {
+        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < Math.abs(distance) * TICKS_PER_CM) {
             opMode.idle();
         }
         stopMotors();
