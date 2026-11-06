@@ -4,9 +4,11 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+
 public class FlowerBoxHardware {
     private DcMotor flowerBox;
-    // new change
+
     private Servo FlowerBoxTip;
 
     private LinearOpMode opMode; // This lets us use OpMode features like sleep()
@@ -14,6 +16,14 @@ public class FlowerBoxHardware {
 
     public void FlowerInitialize(){
         flowerBox = opMode.hardwareMap.get(DcMotor.class, "flowerBox");
+
+    }
+
+    public void ServoTurn(double position){
+            // servo turns
+            FlowerBoxTip.setPosition(position);
+            opMode.sleep(500);
+
     }
 
 
