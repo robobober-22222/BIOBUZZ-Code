@@ -62,7 +62,7 @@ public class DrivetrainHardware {
     }
 
     // ====== STRAIGHT DRIVE ======
-    public void straight(double distance, double power) {
+    public void driveStraight(double distance, double power) {
 
         resetEncoders();
 
@@ -72,7 +72,7 @@ public class DrivetrainHardware {
         }
         setDrivePower(power, power, power, power);
 
-        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < distance * TICKS_PER_CM) {
+        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < Math.abs(distance * TICKS_PER_CM)) {
             opMode.idle();
         }
         stopMotors();
@@ -80,7 +80,7 @@ public class DrivetrainHardware {
     }
 
     // ====== ROTATE DRIVE ======
-    public void rotate(double angle, double power) {
+    public void driveRotate(double angle, double power) {
 
         imu.resetYaw();
 
@@ -91,14 +91,14 @@ public class DrivetrainHardware {
         // Left and right sides move in opposite directions
         setDrivePower(power, power, -power, -power);
 
-        while (opMode.opModeIsActive() && Math.abs(imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES)) < angle) {
+        while (opMode.opModeIsActive() && Math.abs(imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES)) < Math.abs(angle)) {
             opMode.idle();
         }
         stopMotors();
         opMode.sleep(500);
     }
     // ====== STRAFE DRIVE ======
-    public void side(double distance, double power) {
+    public void driveSide(double distance, double power) {
         resetEncoders();
 
         power = Math.abs(power);
@@ -107,7 +107,7 @@ public class DrivetrainHardware {
         }
         setDrivePower(power, -power, -power, power);
 
-        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < distance * TICKS_PER_CM) {
+        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < Math.abs(distance) * TICKS_PER_CM) {
             opMode.idle();
         }
         stopMotors();
@@ -134,10 +134,11 @@ public class DrivetrainHardware {
     }
 
     // ====== SET DRIVE POWER ======
-    private void setDrivePower(double leftFrontPower, double leftBackPower, double rightFrontPower, double rightBackPower) {
+    public void setDrivePower(double leftFrontPower, double leftBackPower, double rightFrontPower, double rightBackPower) {
         leftFront.setPower(leftFrontPower);
         leftBack.setPower(leftBackPower);
         rightFront.setPower(rightFrontPower);
         rightBack.setPower(rightBackPower);
     }
+
 }

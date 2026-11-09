@@ -22,21 +22,21 @@ public class AutoGardenDrivetrain extends LinearOpMode {
 
         // ====== Auto Path ======
         if (opModeIsActive()) {
-            robot.straight(20, 0.3);
-            robot.rotate(90, 0.3);
-            robot.straight(110, 0.3);
-            robot.rotate(90, -0.3);
-            robot.straight(50, 0.3);
-            robot.straight(50, -0.3);
-            robot.side(20, 0.3);
-            robot.rotate(180, -0.3);
-            robot.straight(240, 0.3);
-            robot.rotate(90, 0.3);
-            robot.straight(50, 0.3);
-            robot.rotate(90, 0.3);
+            robot.driveStraight(20, 0.3);
+            robot.driveRotate(90, 0.3);
+            robot.driveStraight(110, 0.3);
+            robot.driveRotate(-90, 0.3);
+            robot.driveStraight(50, 0.3);
+            robot.driveStraight(-50, 0.3);
+            robot.driveSide(20, 0.3);
+            robot.driveRotate(-180, 0.3);
+            robot.driveStraight(240, 0.3);
+            robot.driveRotate(90, 0.3);
+            robot.driveStraight(50, 0.3);
+            robot.driveRotate(90, 0.3);
             sleep(500);
-            robot.rotate(90, 0.3);
-            robot.straight(90, 0.3);
+            robot.driveRotate(90, 0.3);
+            robot.driveStraight(90, 0.3);
         }
     }
 }
