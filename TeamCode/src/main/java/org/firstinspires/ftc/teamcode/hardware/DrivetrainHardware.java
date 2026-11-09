@@ -114,7 +114,7 @@ public class DrivetrainHardware {
         opMode.sleep(500);
     }
 
-    // ====== RESET ENCODERS
+    // ====== RESET ENCODERS ======
     public void resetEncoders() {
 
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
