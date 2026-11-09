@@ -16,7 +16,6 @@ public class IntakeHardware {
     private LinearOpMode opMode; // This lets us use OpMode features like sleep.
 
 
-
     public IntakeHardware(LinearOpMode opMode) {
         this.opMode = opMode;
     }
