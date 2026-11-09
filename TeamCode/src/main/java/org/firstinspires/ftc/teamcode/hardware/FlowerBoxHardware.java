@@ -11,6 +11,8 @@ public class FlowerBoxHardware {
     private Servo flowerBoxTip;
 
     private LinearOpMode opMode; // This lets us use OpMode features like sleep()
+
+
     public FlowerBoxHardware(LinearOpMode opMode) {this.opMode = opMode;}
 
     private final double MOTOR_TICKS = 537.7;
@@ -19,6 +21,10 @@ public class FlowerBoxHardware {
     private final double WHEEL_CIRCUMFERENCE = WHEEL_DIAMETER_CM * Math.PI;
 
     private final double TICKS_PER_CM = MOTOR_TICKS / WHEEL_CIRCUMFERENCE;
+
+    private double position = 0;
+
+
 
     public void flowerInitialize(){
         flowerBox = opMode.hardwareMap.get(DcMotor.class, "flowerBox");
@@ -30,16 +36,16 @@ public class FlowerBoxHardware {
 
     }
 // 84 mm
-    public void slider(double distance, double power){
+    public void slider(double distance, double sliderPower){
         flowerBox.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flowerBox.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        power = Math.abs(power);
+        sliderPower = Math.abs(sliderPower);
         if(distance < 0 ){
-            power *= -1;
+            sliderPower *= -1;
         }
 
-        flowerBox.setPower(power);
+        flowerBox.setPower(sliderPower);
 
         while (opMode.opModeIsActive() && Math.abs(flowerBox.getCurrentPosition()) < Math.abs(distance * TICKS_PER_CM)) {
             opMode.idle();
@@ -52,6 +58,18 @@ public class FlowerBoxHardware {
             // servo turns
             flowerBoxTip.setPosition(position);
             opMode.sleep(500);
+    }
+    public void stopMotor() {
+        setSlidePower(0);
+    }
+
+    // ====== SET DRIVE POWER ======
+    public void setSlidePower(double sliderPower) {
+        flowerBox.setPower(sliderPower);
+    }
+
+    public void getAngle(){
+       position = flowerBoxTip.getPosition();
     }
 
 
