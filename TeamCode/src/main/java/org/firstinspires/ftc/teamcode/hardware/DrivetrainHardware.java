@@ -105,7 +105,7 @@ public class DrivetrainHardware {
         if(distance < 0 ){
             power *= -1;
         }
-        setDrivePower(power, -power, -power, power);//set distance to negative to go left positive to go right
+        setDrivePower(power, -power, -power, power); //set distance to negative to go left positive to go right
 
         while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < Math.abs(distance) * TICKS_PER_CM) {
             opMode.idle();
