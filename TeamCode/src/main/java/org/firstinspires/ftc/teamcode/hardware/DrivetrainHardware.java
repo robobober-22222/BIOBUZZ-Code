@@ -1,4 +1,3 @@
-
 package org.firstinspires.ftc.teamcode.hardware;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
@@ -10,15 +9,14 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 public class DrivetrainHardware {
 
-
+    // ====== HARDWARE OBJECTS ======
     private DcMotor leftFront;
     private DcMotor leftBack;
     private DcMotor rightFront;
     private DcMotor rightBack;
-
     private IMU imu;
 
-
+    // ====== MECANUM CONSTANTS ======
     private final double MOTOR_TICKS = 537.7;
     private final double WHEEL_DIAMETER_CM = 10.4;
 
@@ -26,18 +24,14 @@ public class DrivetrainHardware {
 
     private final double TICKS_PER_CM = MOTOR_TICKS / WHEEL_CIRCUMFERENCE;
 
-
-    private LinearOpMode opMode; // This lets us use OpMode features like sleep.
-
-
-
+    private LinearOpMode opMode; // This lets us use OpMode features like sleep()
     public DrivetrainHardware(LinearOpMode opMode) {
         this.opMode = opMode;
     }
 
     public void initialize() {
 
-
+        // ====== HARDWARE INIT ======
         leftFront = opMode.hardwareMap.get(DcMotor.class, "leftFront");
         leftBack = opMode.hardwareMap.get(DcMotor.class, "leftBack");
         rightFront = opMode.hardwareMap.get(DcMotor.class, "rightFront");
@@ -45,41 +39,30 @@ public class DrivetrainHardware {
 
         imu = opMode.hardwareMap.get(IMU.class, "imu");
 
-
-
+        // ------ DcMotor Modes ------
         leftFront.setDirection(DcMotor.Direction.REVERSE);
         leftBack.setDirection(DcMotor.Direction.REVERSE);
-
         rightFront.setDirection(DcMotor.Direction.FORWARD);
         rightBack.setDirection(DcMotor.Direction.FORWARD);
-
-
 
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-
-
+        // ------ IMU Init ------
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.UP;
-
         RevHubOrientationOnRobot.UsbFacingDirection usbDirection = RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD;
-
         IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(logoDirection, usbDirection));
 
+        // ------ Reset Values ------
         imu.initialize(parameters);
         imu.resetYaw();
-
-
-
         resetEncoders();
     }
 
-
-    // 3. MOVE STRAIGHT
-
-    public void straight(double distance, double power) {
+    // ====== STRAIGHT DRIVE ======
+    public void driveStraight(double distance, double power) {
 
         resetEncoders();
 
@@ -87,22 +70,17 @@ public class DrivetrainHardware {
         if(distance < 0 ){
             power *= -1;
         }
-
         setDrivePower(power, power, power, power);
 
-
-
-        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < distance * TICKS_PER_CM) {
+        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < Math.abs(distance * TICKS_PER_CM)) {
             opMode.idle();
         }
-
         stopMotors();
         opMode.sleep(500);
     }
 
-
-
-    public void rotate(double angle, double power) {
+    // ====== ROTATE DRIVE ======
+    public void driveRotate(double angle, double power) {
 
         imu.resetYaw();
 
@@ -110,46 +88,33 @@ public class DrivetrainHardware {
         if(angle < 0 ){
             power *= -1;
         }
-        // Left and right sides move in opposite directions.
+        // Left and right sides move in opposite directions
+        setDrivePower(power, power, -power, -power);// set angle to positive to turn right set angle to negative to go left
 
-        setDrivePower(power, power, -power, -power);
-
-
-        while (opMode.opModeIsActive() && Math.abs(imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES)) < angle) {
-
+        while (opMode.opModeIsActive() && Math.abs(imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES)) < Math.abs(angle)) {
             opMode.idle();
         }
-
         stopMotors();
         opMode.sleep(500);
     }
-
-
-
-    public void side(double distance, double power) {
-
+    // ====== STRAFE DRIVE ======
+    public void driveSide(double distance, double power) {
         resetEncoders();
 
         power = Math.abs(power);
         if(distance < 0 ){
             power *= -1;
         }
+        setDrivePower(power, -power, -power, power);//set distance to negative to go left positive to go right
 
-
-        setDrivePower(power, -power, -power, power);
-
-
-        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < distance * TICKS_PER_CM) {
-
+        while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < Math.abs(distance) * TICKS_PER_CM) {
             opMode.idle();
         }
-
         stopMotors();
         opMode.sleep(500);
     }
 
-
-
+    // ====== RESET ENCODERS ======
     public void resetEncoders() {
 
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -163,16 +128,17 @@ public class DrivetrainHardware {
         rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
-
-
+    // ====== STOP MOTORS ======
     public void stopMotors() {
-
         setDrivePower(0, 0, 0, 0);
     }
-    private void setDrivePower(double leftFrontPower, double leftBackPower, double rightFrontPower, double rightBackPower) {
+
+    // ====== SET DRIVE POWER ======
+    public void setDrivePower(double leftFrontPower, double leftBackPower, double rightFrontPower, double rightBackPower) {
         leftFront.setPower(leftFrontPower);
         leftBack.setPower(leftBackPower);
         rightFront.setPower(rightFrontPower);
         rightBack.setPower(rightBackPower);
     }
+
 }
