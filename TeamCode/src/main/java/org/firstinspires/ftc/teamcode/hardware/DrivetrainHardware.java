@@ -89,7 +89,7 @@ public class DrivetrainHardware {
             power *= -1;
         }
         // Left and right sides move in opposite directions
-        setDrivePower(power, power, -power, -power);
+        setDrivePower(power, power, -power, -power);// set angle to positive to turn right set angle to negative to go left
 
         while (opMode.opModeIsActive() && Math.abs(imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES)) < Math.abs(angle)) {
             opMode.idle();
@@ -105,7 +105,7 @@ public class DrivetrainHardware {
         if(distance < 0 ){
             power *= -1;
         }
-        setDrivePower(power, -power, -power, power);
+        setDrivePower(power, -power, -power, power);//set distance to negative to go left positive to go right
 
         while (opMode.opModeIsActive() && Math.abs(leftFront.getCurrentPosition()) < Math.abs(distance) * TICKS_PER_CM) {
             opMode.idle();
