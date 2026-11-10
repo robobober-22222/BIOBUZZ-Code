@@ -15,6 +15,7 @@ public class FlowerBoxHardware {
 
     public FlowerBoxHardware(LinearOpMode opMode) {this.opMode = opMode;}
 
+    // TODO: this constans are wrong
     private final double MOTOR_TICKS = 537.7;
     private final double WHEEL_DIAMETER_CM = 10.4;
 
@@ -28,15 +29,20 @@ public class FlowerBoxHardware {
 
     public void flowerInitialize(){
         flowerBox = opMode.hardwareMap.get(DcMotor.class, "flowerBox");
+        // TODO: fix
         flowerBoxTip = opMode.hardwareMap.get(Servo.class, "place holder");
+        // TODO: range from 0 to 1, isn't it?
         flowerBoxTip.scaleRange(-10,0);
         flowerBoxTip.getPosition();
 
         flowerBox.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
     }
+// TODO: mm or sm? 
 // 84 mm
     public void slider(double distance, double sliderPower){
+        // TODO: how about not reset it every time, so that 
+        // we know at which height slider is right now
         flowerBox.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flowerBox.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
@@ -64,6 +70,7 @@ public class FlowerBoxHardware {
     }
 
     // ====== SET DRIVE POWER ======
+    // TODO: lets add boundaries like MIN_TICKS and MAX_TICKS so that we do not move out of range
     public void setSlidePower(double sliderPower) {
         flowerBox.setPower(sliderPower);
     }

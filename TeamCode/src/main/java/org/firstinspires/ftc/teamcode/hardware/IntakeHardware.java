@@ -22,7 +22,7 @@ public class IntakeHardware {
 
     public void initialize() {
 
-
+        // TODO:sure? leftFront
         intake = opMode.hardwareMap.get(DcMotor.class, "leftFront");
 
 

@@ -20,9 +20,10 @@ public class AutoParametersTestFlowerBox extends LinearOpMode {
             robot.slider(84,0.1);
             robot.slider(-84,0.1);
             robot.servoTurn(10);
+            //TODO: if you want to move by 10 degress, divide 10/D, where D is servo's max possible rotation
             robot.servoTurn(-10);
         }
-
+        // TODO: move?
         waitForStart();
     }
 }
