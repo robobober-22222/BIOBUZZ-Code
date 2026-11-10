@@ -23,7 +23,7 @@ public class IntakeHardware {
     public void initialize() {
 
         // TODO:sure? leftFront
-        intake = opMode.hardwareMap.get(DcMotor.class, "leftFront");
+        intake = opMode.hardwareMap.get(DcMotor.class, "Intake");
 
 
         intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -33,7 +33,6 @@ public class IntakeHardware {
     }
 
 
-    // 3. MOVE STRAIGHT
 
     public void intakeStart(double power) {
 
