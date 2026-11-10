@@ -16,14 +16,20 @@ public class AutoParametersTestFlowerBox extends LinearOpMode {
         // Connect and prepare the robot hardware
         robot = new FlowerBoxHardware(this);
         robot.flowerInitialize();
-        if (opModeIsActive()) {
-            robot.slider(84,0.1);
-            robot.slider(-84,0.1);
-            robot.servoTurn(10);
-            //TODO: if you want to move by 10 degress, divide 10/D, where D is servo's max possible rotation
-            robot.servoTurn(-10);
-        }
-        // TODO: move?
+
         waitForStart();
+
+        if (opModeIsActive()) {
+            robot.slide(84,0.1);
+            robot.slide(-84,0.1);
+            robot.servoTurn(10);
+            robot.servoTurn(0.03);
+        }
+        robot.setSlidePower(0);
+    // TODO : add later
+
+    // if anything breaks so it won't move
+    //    robot.servoTurn(0);
+
     }
 }
