@@ -26,10 +26,10 @@ public class AutoParametersTestFlowerBox extends LinearOpMode {
             robot.servoTurn(0.03);
         }
         robot.setSlidePower(0);
-    // TODO : add later
 
+    // TODO : add later
     // if anything breaks so it won't move
-    //    robot.servoTurn(0);
+    // robot.servoTurn(0);
 
     }
 }

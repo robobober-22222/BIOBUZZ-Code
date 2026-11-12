@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.hardware.DrivetrainHardware;
 
 @TeleOp(name = "Teleop Drivetrain First Test")
-public class TeleopDrivetrainFirstTest extends LinearOpMode{
+public class TeleOpDrivetrainFirstTest extends LinearOpMode{
     DrivetrainHardware robot;
 
     @Override
@@ -22,10 +22,10 @@ public class TeleopDrivetrainFirstTest extends LinearOpMode{
             double sidePower = gamepad1.right_trigger - gamepad1.left_trigger;
 
             // ------ Movement Calculations ------
-            double leftFrontDrive = (straightPower + rotatePower + sidePower)*0.6;
-            double leftBackDrive = (straightPower + rotatePower - sidePower)*0.6;
-            double rightFrontDrive = (straightPower - rotatePower - sidePower)*0.6;
-            double rightBackDrive = (straightPower - rotatePower + sidePower)*0.6;
+            double leftFrontDrive = (straightPower + rotatePower + sidePower) * 0.6;
+            double leftBackDrive = (straightPower + rotatePower - sidePower) * 0.6;
+            double rightFrontDrive = (straightPower - rotatePower - sidePower) * 0.6;
+            double rightBackDrive = (straightPower - rotatePower + sidePower) * 0.6;
 
             robot.setDrivePower(leftFrontDrive, leftBackDrive, rightFrontDrive, rightBackDrive);
         }
