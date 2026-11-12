@@ -5,10 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.hardware.FlowerBoxHardware;
 
-
-// TODO: the same name 
-@TeleOp(name = "Teleop Drivetrain First Test")
-public class TeleopFlowerBox extends LinearOpMode {
+@TeleOp(name = "Teleop Flower First Test")
+public class TeleOpFlowerBox extends LinearOpMode {
     FlowerBoxHardware robot;
 
     @Override
@@ -19,17 +17,11 @@ public class TeleopFlowerBox extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-            // ------ Gamepad Trackers ------
-            double straightPower = gamepad1.left_stick_y * -1;
-
-            // ------ Movement Calculations ------
-            double leftFrontDrive = (straightPower);
-            robot.setSlidePower(leftFrontDrive);
+            // ------ Movement Calculation ------
+            double sliderPower = gamepad1.left_stick_y * -1;
+            robot.setSlidePower(sliderPower);
             // NO MORE THAN 84 MILIMETERS I JUST NEED TO CHECK IF ITS RIGHT NUMBER
-
         }
-
     robot.stopMotor();
-
     }
 }
