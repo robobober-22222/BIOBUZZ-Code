@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.hardware.FlowerBoxHardware;
 
-@TeleOp(name = "Teleop Flower First Test")
+@TeleOp(name = "TeleOp Flower Box First Test")
 public class TeleOpFlowerBox extends LinearOpMode {
     FlowerBoxHardware robot;
 
