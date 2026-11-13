@@ -21,15 +21,20 @@ public class FlowerBoxHardware {
 
     private final double WHEEL_CIRCUMFERENCE = WHEEL_DIAMETER_MM * Math.PI;
 
+    // TODO: WHEEL_DIAMETER in MM, but TICKS_PER in SM
     private final double TICKS_PER_CM = MOTOR_TICKS / WHEEL_CIRCUMFERENCE;
 
+    // TODO: rename this one because you have it in slider 
     private double position = 0;
 
 
 
     public void flowerInitialize(){
         flowerBox = opMode.hardwareMap.get(DcMotor.class, "flowerBox");
+        // TODO: place holder
         flowerBoxTip = opMode.hardwareMap.get(Servo.class, "place holder");
+        // TODO: still not fixed!
+        // range is from 0 to 1, why not to put this numbers here ?
         flowerBoxTip.scaleRange(-0.03,0);
         flowerBoxTip.getPosition();
 

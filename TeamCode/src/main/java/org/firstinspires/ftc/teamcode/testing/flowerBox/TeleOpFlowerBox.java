@@ -18,9 +18,11 @@ public class TeleOpFlowerBox extends LinearOpMode {
 
         while (opModeIsActive()) {
             // ------ Movement Calculation ------
+            // TODO: check why -1 
+            // and try to limit it with max_ticks 
             double sliderPower = gamepad1.left_stick_y * -1;
             robot.setSlidePower(sliderPower);
-            // NO MORE THAN 84 MILIMETERS I JUST NEED TO CHECK IF ITS RIGHT NUMBER
+           
         }
     robot.stopMotor();
     }

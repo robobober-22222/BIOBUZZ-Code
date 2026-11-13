@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.hardware.DrivetrainHardware;
 
+// TODO: rename module name, you have the same in Garden
 @Autonomous(name = "Auto Preload Partner Garden")
 public class AutoNoShooterPartner extends LinearOpMode{
     DrivetrainHardware robot;
@@ -20,6 +21,7 @@ public class AutoNoShooterPartner extends LinearOpMode{
             //shoot
             robot.driveRotate(-90,0.4);
             robot.driveStraight(110,0.5);
+            // TODO: huh? why -90-155?
             robot.driveRotate(-90,0.4);
             robot.driveRotate(-155,0.4);
             robot.driveStraight(300,0.5);

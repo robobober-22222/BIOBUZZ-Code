@@ -22,7 +22,7 @@ public class IntakeHardware {
 
     public void initialize() {
 
-        // TODO:sure? leftFront
+        // TODO:sure? leftFront -- if Intake is not random name, then remove this TODO
         intake = opMode.hardwareMap.get(DcMotor.class, "Intake");
 
 
