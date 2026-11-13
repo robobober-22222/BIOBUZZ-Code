@@ -18,12 +18,11 @@ public class TeleOpFlowerBox extends LinearOpMode {
 
         while (opModeIsActive()) {
             // ------ Movement Calculation ------
-            // TODO: check why -1 
             // and try to limit it with max_ticks 
-            double sliderPower = gamepad1.left_stick_y * -1;
+            double sliderPower = gamepad2.left_stick_y;
             robot.setSlidePower(sliderPower);
            
         }
-    robot.stopMotor();
+    robot.stopFlower();
     }
 }

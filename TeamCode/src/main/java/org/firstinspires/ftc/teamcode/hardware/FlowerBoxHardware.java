@@ -3,39 +3,37 @@ package org.firstinspires.ftc.teamcode.hardware;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 
 
 public class FlowerBoxHardware {
     private DcMotor flowerBox;
 
     private Servo flowerBoxTip;
-
+    //private TouchSensor TouchSensorWheel;
     private LinearOpMode opMode; // This lets us use OpMode features like sleep()
 
 
     public FlowerBoxHardware(LinearOpMode opMode) {this.opMode = opMode;}
-
-    // TODO: check numbers for constants
+    //TODO: Check parameters
     private final double MOTOR_TICKS = 537.7;
     private final double WHEEL_DIAMETER_MM = 38.2;
 
     private final double WHEEL_CIRCUMFERENCE = WHEEL_DIAMETER_MM * Math.PI;
 
-    // TODO: WHEEL_DIAMETER in MM, but TICKS_PER in SM
-    private final double TICKS_PER_CM = MOTOR_TICKS / WHEEL_CIRCUMFERENCE;
+    private final double TICKS_PER_MM = MOTOR_TICKS / WHEEL_CIRCUMFERENCE;
 
-    // TODO: rename this one because you have it in slider 
-    private double position = 0;
+    private double TipAngle;
+
+
 
 
 
     public void flowerInitialize(){
         flowerBox = opMode.hardwareMap.get(DcMotor.class, "flowerBox");
-        // TODO: place holder
-        flowerBoxTip = opMode.hardwareMap.get(Servo.class, "place holder");
-        // TODO: still not fixed!
-        // range is from 0 to 1, why not to put this numbers here ?
-        flowerBoxTip.scaleRange(-0.03,0);
+        flowerBoxTip = opMode.hardwareMap.get(Servo.class, "flowerBoxTip");
+        //TouchSensorWheel = opMode.hardwareMap.get(TouchSensor.class, "TouchSensorWheel");
+        flowerBoxTip.scaleRange(0,1);
         flowerBoxTip.getPosition();
 
         flowerBox.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -45,41 +43,42 @@ public class FlowerBoxHardware {
         flowerBox.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
     }
-// 736 mm
 
     // makes slider go to that position
+    /*
     public void slide(double position, double sliderPower){
-
+        //TODO: add max position
         sliderPower = Math.abs(sliderPower);
-        position = Math.abs(position);
-      // TODO: later add the max
+        if (!opMode.opModeIsActive()){
+            return;
+        }
+        if (position <= 0 ) {
+            setSlidePower(-sliderPower);
+           while (opMode.opModeIsActive() && TouchSensorWheel.isPressed() != true){
+               opMode.idle();
+            }
+           stopFlower();
+       } else {
+            if (!TouchSensorWheel.isPressed()){
 
-      //  if position > 736;
-        if (position > flowerBox.getCurrentPosition()){
-            flowerBox.setPower(sliderPower);
-
-            while (opMode.opModeIsActive() && flowerBox.getCurrentPosition() < Math.abs(position * TICKS_PER_CM)) {
+            }
+            resetFlower();
+            setSlidePower(sliderPower);
+            while (opMode.opModeIsActive() && Math.abs(flowerBox.getCurrentPosition()) < Math.abs(position * TICKS_PER_MM)){
                 opMode.idle();
             }
+            stopFlower();
         }
-        else if (position < flowerBox.getCurrentPosition()) {
-            flowerBox.setPower(-sliderPower);
-
-            while (opMode.opModeIsActive() && flowerBox.getCurrentPosition() > Math.abs(position * TICKS_PER_CM)) {
-                opMode.idle();
-            }
-        }
-
-        flowerBox.setPower(0);
         opMode.sleep(500);
 
     }
+    */
     public void servoTurn(double position){
             // servo turns
             flowerBoxTip.setPosition(position);
             opMode.sleep(500);
     }
-    public void stopMotor() {
+    public void stopFlower() {
         setSlidePower(0);
     }
 
@@ -91,7 +90,12 @@ public class FlowerBoxHardware {
     }
 
     public void getAngle(){
-       position = flowerBoxTip.getPosition();
+       TipAngle = flowerBoxTip.getPosition();
+    }
+
+    public void resetFlower(){
+        flowerBox.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        flowerBox.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
 
