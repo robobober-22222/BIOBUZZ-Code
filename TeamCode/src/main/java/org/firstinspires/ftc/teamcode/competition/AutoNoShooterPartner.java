@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.hardware.DrivetrainHardware;
 
 // TODO: rename module name, you have the same in Garden
-@Autonomous(name = "Auto Preload Partner Garden")
+@Autonomous(name = "Auto No Shooter Partner")
 public class AutoNoShooterPartner extends LinearOpMode{
     DrivetrainHardware robot;
     @Override
@@ -21,28 +21,38 @@ public class AutoNoShooterPartner extends LinearOpMode{
             //shoot
             robot.driveRotate(-90,0.4);
             robot.driveStraight(110,0.5);
-            // TODO: huh? why -90-155?
-            robot.driveRotate(-90,0.4);
-            robot.driveRotate(-155,0.4);
-            robot.driveStraight(300,0.5);
-            robot.driveRotate(120,0.4);
+            robot.driveStraight(-110,0.5);
+            robot.driveRotate(90,0.4);
+            robot.driveStraight(290,0.5);
+            robot.driveRotate(180,0.4);
             //shoot
             sleep(200);
-            robot.driveRotate(100,0.4);
-            robot.driveStraight(100,0.5);
             robot.driveRotate(110,0.4);
-            robot.driveStraight(300,0.5);
-            robot.driveRotate(-160,0.4);
+            robot.driveRotate(-110,0.5);
+            //shoot
+            robot.driveStraight(10,0.5);
+            robot.driveRotate(90,0.4);
+            robot.driveStraight(100,0.5);
+            robot.driveStraight(-100,0.5);
+            robot.driveRotate(-90,0.4);
+            robot.driveStraight(290,0.5);
+            robot.driveRotate(180,0.4);
             //shoot
             sleep(200);
-            robot.driveRotate(-40,0.4);
+            robot.driveRotate(-90,0.4);
             robot.driveStraight(120,0.5);
-            robot.driveStraight(-120,0.5);
-            robot.driveRotate(40,0.4);
+            robot.driveRotate(90,0.4);
+            robot.driveStraight(60,0.5);
+            //intake
+            robot.driveStraight(-60,0.5);
+            robot.driveRotate(90,0.4);
+            robot.driveStraight(100,0.5);
+            robot.driveRotate(-90,0.4);
             //shoot
             sleep(200);
-            robot.driveRotate(-20,0.4);
-            robot.driveStraight(200,0.5);
+            robot.driveSide(100,0.5);
+            robot.driveStraight(180,0.5);
+
         }
     }
 }
