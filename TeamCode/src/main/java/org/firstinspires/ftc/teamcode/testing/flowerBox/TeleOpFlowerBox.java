@@ -22,6 +22,8 @@ public class TeleOpFlowerBox extends LinearOpMode {
                 robot.servoTurn(0.03);
             } else if (gamepad1.bWasPressed()) {
                 robot.servoTurn(0);
+            } else if (gamepad1.xWasPressed()) {
+                robot.slide(82,0.2);
             }
             double sliderPower = gamepad1.left_stick_y * -1;
             robot.setSlidePower(sliderPower);

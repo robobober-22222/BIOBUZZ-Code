@@ -10,7 +10,7 @@ public class FlowerBoxHardware {
     private DcMotor flowerBox;
 
     private Servo flowerBoxTip;
-    //private TouchSensor TouchSensorWheel;
+    private TouchSensor touchSensorFlowerBox;
     private LinearOpMode opMode; // This lets us use OpMode features like sleep()
 
 
@@ -32,7 +32,7 @@ public class FlowerBoxHardware {
     public void flowerInitialize(){
         flowerBox = opMode.hardwareMap.get(DcMotor.class, "flowerBox");
         flowerBoxTip = opMode.hardwareMap.get(Servo.class, "flowerBoxTip");
-        //TouchSensorWheel = opMode.hardwareMap.get(TouchSensor.class, "TouchSensorWheel");
+        touchSensorFlowerBox = opMode.hardwareMap.get(TouchSensor.class, "touchSensorFlowerBox");
         flowerBoxTip.scaleRange(0,1);
         flowerBoxTip.getPosition();
 
@@ -45,7 +45,7 @@ public class FlowerBoxHardware {
     }
 
     // makes slider go to that position
-    /*
+
     public void slide(double position, double sliderPower){
         //TODO: add max position
         sliderPower = Math.abs(sliderPower);
@@ -54,12 +54,12 @@ public class FlowerBoxHardware {
         }
         if (position <= 0 ) {
             setSlidePower(-sliderPower);
-           while (opMode.opModeIsActive() && TouchSensorWheel.isPressed() != true){
+           while (opMode.opModeIsActive() && touchSensorFlowerBox.isPressed() != true){
                opMode.idle();
             }
            stopFlower();
        } else {
-            if (!TouchSensorWheel.isPressed()){
+            if (!touchSensorFlowerBox.isPressed()){
 
             }
             resetFlower();
@@ -72,7 +72,7 @@ public class FlowerBoxHardware {
         opMode.sleep(500);
 
     }
-    */
+
     public void servoTurn(double position){
             // servo turns
             flowerBoxTip.setPosition(position);
