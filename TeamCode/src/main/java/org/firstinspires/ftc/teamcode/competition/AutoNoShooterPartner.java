@@ -24,7 +24,7 @@ public class AutoNoShooterPartner extends LinearOpMode{
             robot.driveStraight(-110,0.5);
             robot.driveRotate(90,0.4);
             robot.driveStraight(255,0.5);
-            robot.driveRotate(179,0.4);
+            robot.driveRotate(170,0.4);
             //shoot
             sleep(200);
             robot.driveRotate(110,0.4);
