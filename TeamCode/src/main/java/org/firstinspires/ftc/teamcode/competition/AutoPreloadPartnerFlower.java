@@ -19,6 +19,7 @@ public class AutoPreloadPartnerFlower extends LinearOpMode{
             sleep(500); // shoot
             robot.driveStraight(320, 0.3); // move to the opposite side of the playing field
             sleep(300); // intake activation
+            // TODO: fix, this will not work
             robot.driveRotate(180, 0.3); // rotate to face the HIVE
             sleep(500); // shoot
             robot.driveStraight(300, 0.3); // move to the opposite side of the playing field

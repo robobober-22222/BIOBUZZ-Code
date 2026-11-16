@@ -20,9 +20,9 @@ public class AutoPreloadPartnerGarden extends LinearOpMode{
             sleep(2500);
             //shoot
             robot.driveStraight(5,0.5);
-            robot.driveRotate(9,0.4);
+            robot.driveRotate(120,0.4);
             //intake
-            robot.driveRotate(9,0.4);
+            robot.driveRotate(-120,0.4);
             //shoot
             robot.driveStraight(290,0.5);
             robot.driveRotate(90,0.4);
