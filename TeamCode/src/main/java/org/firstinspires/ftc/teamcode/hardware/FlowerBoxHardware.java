@@ -36,6 +36,7 @@ public class FlowerBoxHardware {
         flowerBoxTip.scaleRange(0,1);
         flowerBoxTip.getPosition();
 
+        flowerBox.setDirection(DcMotor.Direction.REVERSE);
         flowerBox.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
@@ -60,7 +61,7 @@ public class FlowerBoxHardware {
            stopFlower();
        } else {
             if (!touchSensorFlowerBox.isPressed()){
-
+                slide(0,sliderPower);
             }
             resetFlower();
             setSlidePower(sliderPower);
