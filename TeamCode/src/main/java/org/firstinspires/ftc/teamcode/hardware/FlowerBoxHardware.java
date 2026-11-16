@@ -54,8 +54,8 @@ public class FlowerBoxHardware {
             return;
         }
         if (position <= 0 ) {
-            setSlidePower(-sliderPower);
-           while (opMode.opModeIsActive() && touchSensorFlowerBox.isPressed() != true){
+           setSlidePower(-sliderPower);
+           while (opMode.opModeIsActive() && !(touchSensorFlowerBox.isPressed())){
                opMode.idle();
             }
            stopFlower();

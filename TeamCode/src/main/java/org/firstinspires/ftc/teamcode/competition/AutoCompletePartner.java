@@ -14,17 +14,17 @@ public class AutoCompletePartner extends LinearOpMode{
         robot.initialize();
 
         waitForStart();
-        // Rotate cannot be exactly 180 degrees. Use 179.9 instead.
+        // Rotate cannot be exactly 180 degrees. Use 179 instead.
         if (opModeIsActive()){
             sleep(500); // shoot
             robot.driveStraight(10, 0.3);
-            robot.driveRotate(179.9,0.3); // rotate to face the garden
+            robot.driveRotate(170, 0.3); // rotate to face the garden | Value needs tweaking
             robot.driveSide(-210, 0.5); // move to the garden
             robot.driveStraight(10, 0.3); // collect POLLEN from GARDEN
             sleep(300); // intake activation
             robot.driveStraight(-10, 0.3); // move away from GARDEN
             robot.driveSide(-210, 0.5); // move to the HIVE shooting position
-            robot.driveRotate(179.9, 0.3); // rotate to face the HIVE
+            robot.driveRotate(170, 0.3); // rotate to face the HIVE
         }
     }
 }
