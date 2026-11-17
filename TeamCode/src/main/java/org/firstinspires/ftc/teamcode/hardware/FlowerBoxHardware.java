@@ -93,6 +93,10 @@ public class FlowerBoxHardware {
         opMode.telemetry.addData("flowerBoxTip Angle: ",TipAngle);
     }
 
+    public void getButton(){
+        opMode.telemetry.addData("Button pressed",touchSensorFlowerBox.isPressed());
+    }
+
     public void resetFlower(){
         flowerBox.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flowerBox.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
