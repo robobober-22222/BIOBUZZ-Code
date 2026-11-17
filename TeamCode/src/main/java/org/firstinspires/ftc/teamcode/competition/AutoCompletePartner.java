@@ -14,7 +14,7 @@ public class AutoCompletePartner extends LinearOpMode{
         robot.initialize();
 
         waitForStart();
-        // Rotate cannot be exactly 180 degrees. Use 179 instead.
+        // driveRotate() cannot handle 180 degrees as an argument. Use 170 instead to account for friction.
         if (opModeIsActive()){
             sleep(500); // shoot
             robot.driveStraight(10, 0.3);
