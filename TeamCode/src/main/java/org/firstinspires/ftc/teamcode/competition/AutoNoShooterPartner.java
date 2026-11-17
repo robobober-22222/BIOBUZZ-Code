@@ -36,11 +36,7 @@ public class AutoNoShooterPartner extends LinearOpMode{
             robot.driveStraight(-100,0.5);
             robot.driveRotate(-90,0.4);
             robot.driveStraight(290,0.5);
-            // TODO: fix 180 rotation everywhere 
-            // 180 does not work, because getYaw() always returns values from -180 and 180
-            // and your comparison with module will always be true, so you will rotate without stopping
-            // better use 2 rotations by 90 deg or 179deg
-            robot.driveRotate(180,0.4);
+            robot.driveRotate(170,0.4);
             //shoot
             sleep(200);
             robot.driveRotate(-90,0.4);
