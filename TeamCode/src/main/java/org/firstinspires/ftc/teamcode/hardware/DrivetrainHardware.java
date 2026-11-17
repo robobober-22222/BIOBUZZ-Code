@@ -18,7 +18,7 @@ public class DrivetrainHardware {
     private IMU imu;
 
     // ====== MECANUM CONSTANTS ======
-    private final double MOTOR_TICKS = 537.7;
+    private final double MOTOR_TICKS = 384.5;
     private final double WHEEL_DIAMETER_CM = 10.4;
 
     private final double WHEEL_CIRCUMFERENCE = WHEEL_DIAMETER_CM * Math.PI;
