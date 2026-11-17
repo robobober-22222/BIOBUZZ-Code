@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.hardware.FlowerBoxHardware;
 
 @TeleOp(name = "TeleOp Flower Box First Test")
-public class TeleOpFlowerBox extends LinearOpMode {
+public class TeleOpFlowerBoxFirstTest extends LinearOpMode {
     FlowerBoxHardware robot;
 
     @Override
@@ -22,7 +22,7 @@ public class TeleOpFlowerBox extends LinearOpMode {
                 robot.servoTurn(0.03);
             } else if (gamepad1.bWasPressed()) {
                 robot.servoTurn(0);
-            } else if (gamepad1.xWasPressed()) {
+            } if (gamepad1.xWasPressed()) {
                 robot.slide(82,0.2);
             }
 

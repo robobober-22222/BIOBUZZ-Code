@@ -14,13 +14,9 @@ public class FlowerBoxHardware {
 
     public FlowerBoxHardware(LinearOpMode opMode) {this.opMode = opMode;}
     private final double MOTOR_TICKS = 384.5;
-
     private final double WHEEL_DIAMETER_MM = 38.2;
-
     private final double WHEEL_CIRCUMFERENCE = WHEEL_DIAMETER_MM * Math.PI;
-
     private final double TICKS_PER_MM = MOTOR_TICKS / WHEEL_CIRCUMFERENCE;
-
     private double TipAngle;
 
     // ====== FLOWER BOX INIT ======
@@ -54,7 +50,7 @@ public class FlowerBoxHardware {
            stopFlower();
        } else {
             if (!touchSensorFlowerBox.isPressed()){
-                slide(0,sliderPower);
+                slide(0, sliderPower);
             }
             resetFlower();
             setSlidePower(sliderPower);
@@ -63,8 +59,7 @@ public class FlowerBoxHardware {
             }
             stopFlower();
         }
-        opMode.sleep(500);
-
+        opMode.sleep(50);
     }
 
     // ====== Turn Servo to Position ======
@@ -80,25 +75,27 @@ public class FlowerBoxHardware {
     // TODO:  add boundaries like MIN_TICKS and MAX_TICKS so that we do not move out of range
 
     public void setSlidePower(double sliderPower) {
-        flowerBox.setPower(sliderPower);
+        if (touchSensorFlowerBox.isPressed() && sliderPower < 0) {
+            flowerBox.setPower(0);
+        } else {
+            flowerBox.setPower(sliderPower);
+        }
     }
     // in getters you always should return the value
     // that is the point of getter -- to get some value from your class 
     public void getAngle(){
         TipAngle = flowerBoxTip.getPosition();
         opMode.telemetry.addData("flowerBoxTip Angle: ",TipAngle);
+        opMode.telemetry.update();
     }
 
     public void getButton(){
         opMode.telemetry.addData("Button pressed",touchSensorFlowerBox.isPressed());
+        opMode.telemetry.update();
     }
 
     public void resetFlower(){
         flowerBox.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flowerBox.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
-
-
-
-
 }
