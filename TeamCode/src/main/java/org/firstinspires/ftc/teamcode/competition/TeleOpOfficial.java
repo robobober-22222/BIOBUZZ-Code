@@ -26,7 +26,7 @@ public class TeleOpOfficial extends LinearOpMode{
             double rotatePower = gamepad1.right_stick_x;
             double sidePower = gamepad1.right_trigger - gamepad1.left_trigger;
 
-            double intakeRotate = gamepad1.left_stick_y;
+            double intakeRotate = gamepad2.left_stick_y;
 
 
             // ------ Movement Calculations ------
