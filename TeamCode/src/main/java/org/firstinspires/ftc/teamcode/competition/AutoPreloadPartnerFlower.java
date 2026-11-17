@@ -41,8 +41,8 @@ public class AutoPreloadPartnerFlower extends LinearOpMode{
             sleep(500); // shoot
             // PARKING
             robot.driveStraight(300, 0.3);
-            robot.driveSide(150, 0.3);
-            robot.driveSide(-5, 0.3); // Make sure the robot isn't touching the wall
+            robot.driveSide(-150, 0.3);
+            robot.driveSide(5, 0.3); // Make sure the robot isn't touching the wall
         }
     }
 }
