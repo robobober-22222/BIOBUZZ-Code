@@ -26,33 +26,25 @@ public class IntakeHardware {
         intake = opMode.hardwareMap.get(DcMotor.class, "Intake");
 
 
-        intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
-        resetEncoders();
+
     }
 
 
 
     public void intakeStart(double power) {
 
-        resetEncoders();
+
 
         intake.setPower(power);
 
     }
 
     public void intakeStop(){
-        resetEncoders();
 
         intake.setPower(0);
     }
 
-    public void resetEncoders() {
-
-        intake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-    }
 
 }
