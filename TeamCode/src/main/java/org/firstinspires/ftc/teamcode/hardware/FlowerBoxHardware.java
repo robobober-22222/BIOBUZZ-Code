@@ -28,12 +28,11 @@ public class FlowerBoxHardware {
         flowerBox = opMode.hardwareMap.get(DcMotor.class, "flowerBox");
         flowerBoxTip = opMode.hardwareMap.get(Servo.class, "flowerBoxTip");
         touchSensorFlowerBox = opMode.hardwareMap.get(TouchSensor.class, "touchSensorFlowerBox");
-        flowerBoxTip.scaleRange(0,1);
+        flowerBoxTip.scaleRange(0,1); // Limits
         flowerBoxTip.getPosition();
 
         flowerBox.setDirection(DcMotor.Direction.REVERSE);
         flowerBox.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
 
         flowerBox.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flowerBox.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
