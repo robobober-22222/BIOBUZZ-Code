@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
-
 public class FlowerBoxHardware {
     private DcMotor flowerBox;
 
@@ -13,10 +12,9 @@ public class FlowerBoxHardware {
     private TouchSensor touchSensorFlowerBox;
     private LinearOpMode opMode; // This lets us use OpMode features like sleep()
 
-
     public FlowerBoxHardware(LinearOpMode opMode) {this.opMode = opMode;}
-    //TODO: Check parameters
-    private final double MOTOR_TICKS = 537.7;
+    private final double MOTOR_TICKS = 384.5;
+
     private final double WHEEL_DIAMETER_MM = 38.2;
 
     private final double WHEEL_CIRCUMFERENCE = WHEEL_DIAMETER_MM * Math.PI;
@@ -25,6 +23,7 @@ public class FlowerBoxHardware {
 
     private double TipAngle;
 
+    // ====== FLOWER BOX INIT ======
     public void flowerInitialize(){
         flowerBox = opMode.hardwareMap.get(DcMotor.class, "flowerBox");
         flowerBoxTip = opMode.hardwareMap.get(Servo.class, "flowerBoxTip");
@@ -41,8 +40,7 @@ public class FlowerBoxHardware {
 
     }
 
-    // makes slider go to that position
-
+    // ====== Move Slider to Position ======
     public void slide(double position, double sliderPower){
         //TODO: add max position
         sliderPower = Math.abs(sliderPower);
@@ -70,6 +68,7 @@ public class FlowerBoxHardware {
 
     }
 
+    // ====== Turn Servo to Position ======
     public void servoTurn(double position){
             // servo turns
             flowerBoxTip.setPosition(position);
@@ -78,7 +77,6 @@ public class FlowerBoxHardware {
     public void stopFlower() {
         setSlidePower(0);
     }
-
 
     // TODO:  add boundaries like MIN_TICKS and MAX_TICKS so that we do not move out of range
 
@@ -89,7 +87,11 @@ public class FlowerBoxHardware {
     // that is the point of getter -- to get some value from your class 
     public void getAngle(){
         TipAngle = flowerBoxTip.getPosition();
-        return TipAngle;
+        opMode.telemetry.addData("flowerBoxTip Angle: ",TipAngle);
+    }
+
+    public void getButton(){
+        opMode.telemetry.addData("Button pressed",touchSensorFlowerBox.isPressed());
     }
 
     public void resetFlower(){
