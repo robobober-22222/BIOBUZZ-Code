@@ -20,7 +20,7 @@ public class IntakeHardware {
         this.opMode = opMode;
     }
 
-    public void initialize() {
+    public void intakeInitialize() {
 
         // TODO:sure? leftFront -- if Intake is not random name, then remove this TODO
         intake = opMode.hardwareMap.get(DcMotor.class, "Intake");
