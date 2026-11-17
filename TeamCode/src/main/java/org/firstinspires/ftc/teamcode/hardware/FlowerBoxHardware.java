@@ -82,15 +82,18 @@ public class FlowerBoxHardware {
         }
     }
     // in getters you always should return the value
-    // that is the point of getter -- to get some value from your class 
+    // that is the point of getter -- to get some value from your class
     public void getAngle(){
         TipAngle = flowerBoxTip.getPosition();
-        opMode.telemetry.addData("flowerBoxTip Angle: ",TipAngle);
-        opMode.telemetry.update();
+        //opMode.telemetry.addData("flowerBoxTip Angle: ",TipAngle);
+        //opMode.telemetry.update();
     }
 
     public void getButton(){
-        opMode.telemetry.addData("Button pressed",touchSensorFlowerBox.isPressed());
+        boolean pressed = touchSensorFlowerBox.isPressed();
+
+        opMode.telemetry.addData("Button pressed", pressed);
+        opMode.telemetry.addData("Raw state", touchSensorFlowerBox.getValue());
         opMode.telemetry.update();
     }
 
