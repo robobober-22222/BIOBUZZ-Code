@@ -25,10 +25,6 @@ public class FlowerBoxHardware {
 
     private double TipAngle;
 
-
-
-
-
     public void flowerInitialize(){
         flowerBox = opMode.hardwareMap.get(DcMotor.class, "flowerBox");
         flowerBoxTip = opMode.hardwareMap.get(Servo.class, "flowerBoxTip");
@@ -89,9 +85,11 @@ public class FlowerBoxHardware {
     public void setSlidePower(double sliderPower) {
         flowerBox.setPower(sliderPower);
     }
-
+    // in getters you always should return the value
+    // that is the point of getter -- to get some value from your class 
     public void getAngle(){
-       TipAngle = flowerBoxTip.getPosition();
+        TipAngle = flowerBoxTip.getPosition();
+        return TipAngle;
     }
 
     public void resetFlower(){
