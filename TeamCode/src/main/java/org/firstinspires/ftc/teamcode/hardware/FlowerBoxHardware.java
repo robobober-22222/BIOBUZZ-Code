@@ -90,11 +90,21 @@ public class FlowerBoxHardware {
     }
 
     public void getButton(){
-        boolean pressed = touchSensorFlowerBox.isPressed();
 
-        opMode.telemetry.addData("Button pressed", pressed);
-        opMode.telemetry.addData("Raw state", touchSensorFlowerBox.getValue());
-        opMode.telemetry.update();
+        if (touchSensorFlowerBox.isPressed()){
+            boolean pressed = true;
+            opMode.telemetry.addData("Button pressed", pressed);
+            opMode.telemetry.addData("Raw state", touchSensorFlowerBox.getValue());
+            opMode.telemetry.update();
+        }
+        else {
+            boolean pressed = false;
+            opMode.telemetry.addData("Button pressed", pressed);
+            opMode.telemetry.addData("Raw state", touchSensorFlowerBox.getValue());
+            opMode.telemetry.update();
+        }
+
+
     }
 
     public void resetFlower(){
