@@ -16,6 +16,7 @@ public class AutoPreloadPartnerGarden extends LinearOpMode{
 
         waitForStart();
 
+        // driveRotate() cannot handle 180 degrees as an argument. Use 170 instead to account for friction.
         if (opModeIsActive()){
             sleep(2500);
             //shoot

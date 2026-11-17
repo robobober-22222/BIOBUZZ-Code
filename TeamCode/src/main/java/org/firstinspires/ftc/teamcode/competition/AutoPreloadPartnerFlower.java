@@ -14,13 +14,12 @@ public class AutoPreloadPartnerFlower extends LinearOpMode{
         robot.initialize();
 
         waitForStart();
-        // Rotate cannot be exactly 180 degrees. Use 179.9 instead.
+        // driveRotate() cannot handle 180 degrees as an argument. Use 170 instead to account for friction.
         if (opModeIsActive()){
             sleep(500); // shoot
             robot.driveStraight(320, 0.3); // move to the opposite side of the playing field
             sleep(300); // intake activation
-            // TODO: fix, this will not work
-            robot.driveRotate(179, 0.3); // rotate to face the HIVE
+            robot.driveRotate(170, 0.3); // rotate to face the HIVE
             sleep(500); // shoot
             robot.driveStraight(300, 0.3); // move to the opposite side of the playing field
             robot.driveSide(150, 0.3); // move towards GARDEN
