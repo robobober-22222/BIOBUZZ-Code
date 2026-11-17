@@ -17,25 +17,32 @@ public class AutoPreloadPartnerFlower extends LinearOpMode{
         // driveRotate() cannot handle 180 degrees as an argument. Use 170 instead to account for friction.
         if (opModeIsActive()){
             sleep(500); // shoot
-            robot.driveStraight(320, 0.3); // move to the opposite side of the playing field
+            robot.driveRotate(110, 0.3); // rotate to face the FLOWER (imitate moving to FLOWER before we have an intake)
             sleep(300); // intake activation
-            robot.driveRotate(170, 0.3); // rotate to face the HIVE
+            robot.driveRotate(-110, 0.3); // rotate to face the HIVE
             sleep(500); // shoot
+            // GARDEN collection
             robot.driveStraight(300, 0.3); // move to the opposite side of the playing field
             robot.driveSide(150, 0.3); // move towards GARDEN
-            robot.driveStraight(45,0.3); // move to the GARDEN position
-            sleep(500); // activate intake
-            robot.driveStraight(-120, 0.3); // move back to shooting the position
-            robot.driveRotate(90,0.3);
+            robot.driveStraight(20,0.3); // move to the GARDEN position
+            sleep(300); // intake activation
+            // Move to shooting position
+            robot.driveStraight(-20,0.3);
+            robot.driveSide(-150, 0.3);
+            robot.driveRotate(170, 0.3);
             sleep(500); // shoot
-            robot.driveRotate(-50,0.3); // rotate to the flower
-            robot.driveStraight(170, 0.3); // move to the flower
-            sleep(500); // activate intake
-            robot.driveStraight(-170,0.3); // move to shooting position
-            robot.driveRotate(50,0.3); // rotate to hive
+            // FLOWER collection
+            robot.driveRotate(-45, 0.3);
+            robot.driveStraight(180,0.3);
+            sleep(300); // intake
+            // Move to shooting position
+            robot.driveStraight(-180,0.3);
+            robot.driveRotate(45, 0.3);
             sleep(500); // shoot
-            robot.driveRotate(-75,0.3);
-            robot.driveStraight(270,0.3);
+            // PARKING
+            robot.driveStraight(300, 0.3);
+            robot.driveSide(150, 0.3);
+            robot.driveSide(-5, 0.3); // Make sure the robot isn't touching the wall
         }
     }
 }
