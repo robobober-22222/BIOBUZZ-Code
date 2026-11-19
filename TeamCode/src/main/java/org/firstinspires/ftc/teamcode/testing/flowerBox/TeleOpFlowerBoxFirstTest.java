@@ -23,10 +23,12 @@ public class TeleOpFlowerBoxFirstTest extends LinearOpMode {
             // ------ Movement Calculation ------
             if (gamepad1.aWasPressed()) {
                 robot.servoTurn(0.09);
-            } else if (gamepad1.bWasPressed()) {
-                robot.servoTurn(0);
+            } if (gamepad1.bWasPressed()) {
+                robot.slide(0,0.4);
             } if (gamepad1.xWasPressed()) {
-                robot.slide(82,0.4);
+                robot.slide(680.4,0.4);
+            } if (gamepad1.dpad_up){
+                robot.servoTurn(0);
             }
 
             double sliderPower = gamepad1.left_stick_y * -1;
@@ -36,7 +38,7 @@ public class TeleOpFlowerBoxFirstTest extends LinearOpMode {
                 robot.flowerEncoder();
             }
 
-            // NO MORE THAN 84 MILIMETERS I JUST NEED TO CHECK IF ITS RIGHT NUMBER
+            // NO MORE THAN  MILIMETERS I JUST NEED TO CHECK IF ITS RIGHT NUMBER
         }
     robot.stopFlower();
     }
