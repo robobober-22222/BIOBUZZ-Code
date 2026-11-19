@@ -16,7 +16,7 @@ public class AutoLeavePark extends LinearOpMode{
         waitForStart();
 
         if (opModeIsActive()){
-            robot.driveStraight(20,0.3);
+            robot.driveStraight(40,0.3);
             robot.driveSide(-5,0.3);
         }
     }
