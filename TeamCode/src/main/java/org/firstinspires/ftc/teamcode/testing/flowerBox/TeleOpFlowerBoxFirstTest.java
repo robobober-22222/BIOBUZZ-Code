@@ -19,18 +19,18 @@ public class TeleOpFlowerBoxFirstTest extends LinearOpMode {
         while (opModeIsActive()) {
             // ------ Movement Calculation ------
             if (gamepad1.aWasPressed()) {
-                robot.servoTurn(0.03);
+                robot.servoTurn(0.09);
             } else if (gamepad1.bWasPressed()) {
                 robot.servoTurn(0);
             } if (gamepad1.xWasPressed()) {
-                robot.slide(82,0.2);
+                robot.slide(82,0.4);
             }
 
             double sliderPower = gamepad1.left_stick_y * -1;
             robot.setSlidePower(sliderPower);
             sleep(100);
             robot.getAngle();
-            robot.getButton();
+
             // NO MORE THAN 84 MILIMETERS I JUST NEED TO CHECK IF ITS RIGHT NUMBER
         }
     robot.stopFlower();
