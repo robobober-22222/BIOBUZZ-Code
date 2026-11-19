@@ -111,4 +111,8 @@ public class FlowerBoxHardware {
         flowerBox.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flowerBox.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
+    public void flowerEncoder(){
+        opMode.telemetry.addData("Flower Box Motor Encoder: ",flowerBox.getCurrentPosition());
+        opMode.telemetry.update();
+    }
 }

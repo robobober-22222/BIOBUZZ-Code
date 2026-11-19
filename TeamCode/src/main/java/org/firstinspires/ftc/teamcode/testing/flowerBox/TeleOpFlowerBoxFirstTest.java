@@ -17,6 +17,9 @@ public class TeleOpFlowerBoxFirstTest extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
+            if (gamepad1.yWasPressed()){
+                robot.resetFlower();
+            }
             // ------ Movement Calculation ------
             if (gamepad1.aWasPressed()) {
                 robot.servoTurn(0.09);
@@ -29,7 +32,9 @@ public class TeleOpFlowerBoxFirstTest extends LinearOpMode {
             double sliderPower = gamepad1.left_stick_y * -1;
             robot.setSlidePower(sliderPower);
             sleep(100);
-            robot.getAngle();
+            if (gamepad1.bWasPressed()){
+                robot.flowerEncoder();
+            }
 
             // NO MORE THAN 84 MILIMETERS I JUST NEED TO CHECK IF ITS RIGHT NUMBER
         }
