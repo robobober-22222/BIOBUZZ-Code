@@ -20,10 +20,10 @@ public class AutoNoShooterPartner extends LinearOpMode{
         if (opModeIsActive()){
             robot.driveStraight(10,0.5);
             //shoot
-            robot.driveRotate(-90,0.4);
+            robot.driveRotate(-83,0.4);
             robot.driveStraight(110,0.5);
             robot.driveStraight(-110,0.5);
-            robot.driveRotate(90,0.4);
+            robot.driveRotate(83,0.4);
             robot.driveStraight(255,0.5);
             robot.driveRotate(170,0.4);
             //shoot
@@ -32,23 +32,23 @@ public class AutoNoShooterPartner extends LinearOpMode{
             robot.driveRotate(-110,0.5);
             //shoot
             robot.driveStraight(10,0.5);
-            robot.driveRotate(90,0.4);
+            robot.driveRotate(83,0.4);
             robot.driveStraight(100,0.5);
             robot.driveStraight(-100,0.5);
-            robot.driveRotate(-90,0.4);
+            robot.driveRotate(-83,0.4);
             robot.driveStraight(290,0.5);
             robot.driveRotate(170,0.4);
             //shoot
             sleep(200);
-            robot.driveRotate(-90,0.4);
+            robot.driveRotate(-83,0.4);
             robot.driveStraight(120,0.5);
-            robot.driveRotate(90,0.4);
+            robot.driveRotate(83,0.4);
             robot.driveStraight(60,0.5);
             //intake
             robot.driveStraight(-60,0.5);
-            robot.driveRotate(90,0.4);
+            robot.driveRotate(83,0.4);
             robot.driveStraight(100,0.5);
-            robot.driveRotate(-90,0.4);
+            robot.driveRotate(-83,0.4);
             //shoot
             sleep(200);
             robot.driveSide(100,0.5);
