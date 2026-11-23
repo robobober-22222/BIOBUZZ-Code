@@ -29,8 +29,7 @@ public class AutoGardenDrivetrain extends LinearOpMode {
             robot.driveStraight(50, 0.3);
             robot.driveStraight(-50, 0.3);
             robot.driveSide(20, 0.3);
-            // TODO: -180 replace 
-            robot.driveRotate(-180, 0.3);
+            robot.driveRotate(-170, 0.3);
             robot.driveStraight(240, 0.3);
             robot.driveRotate(90, 0.3);
             robot.driveStraight(50, 0.3);
