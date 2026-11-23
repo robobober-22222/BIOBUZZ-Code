@@ -26,27 +26,27 @@ public class AutoPreloadPartnerGarden extends LinearOpMode{
             robot.driveRotate(-120,0.4);
             //shoot
             robot.driveStraight(300,0.5);
-            robot.driveRotate(90,0.4);
+            robot.driveRotate(83,0.4);
             robot.driveStraight(110,0.5);
-            robot.driveRotate(90,0.4);
+            robot.driveRotate(83,0.4);
             robot.driveStraight(40,0.5);
             robot.driveStraight(-20,0.5);
-            robot.driveRotate(-90,0.4);
+            robot.driveRotate(-83,0.4);
             robot.driveStraight(100,0.5);
-            robot.driveRotate(-90,0.4);
+            robot.driveRotate(-83,0.4);
             //shoot
-            robot.driveRotate(90,0.4);
+            robot.driveRotate(83,0.4);
             robot.driveStraight(100,0.4);
-            robot.driveRotate(-90,0.4);
+            robot.driveRotate(-83,0.4);
             robot.driveStraight(40,0.4);
             robot.driveStraight(-40,0.4);
-            robot.driveRotate(-90,0.4);
+            robot.driveRotate(-83,0.4);
             robot.driveStraight(100,0.5);
-            robot.driveRotate(-90,0.4);
+            robot.driveRotate(-83,0.4);
             //shoot
-            robot.driveRotate(90,0.4);
+            robot.driveRotate(83,0.4);
             robot.driveStraight(90,0.5);
-            robot.driveRotate(90,0.4);
+            robot.driveRotate(83,0.4);
             robot.driveStraight(130,0.5);
         }
     }
