@@ -34,6 +34,7 @@ public class TeleOpFlowerBoxFirstTest extends LinearOpMode {
             double sliderPower = -gamepad1.left_stick_y;
             robot.setSlidePower(sliderPower);
             sleep(100);
+            // TODO: second call will not work
             if (gamepad1.bWasPressed()){
                 robot.flowerEncoder();
             }

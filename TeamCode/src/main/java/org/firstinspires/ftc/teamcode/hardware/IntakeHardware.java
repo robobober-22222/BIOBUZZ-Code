@@ -14,6 +14,7 @@ public class IntakeHardware {
 
     public void intakeInitialize() {
         intake = opMode.hardwareMap.get(DcMotor.class, "Intake");
+        // TODO: pollenRetireval are you sure about the name ?
         pollenRetrieval = opMode.hardwareMap.get(Servo.class, "pollenRetireval");
 
         intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -30,7 +31,7 @@ public class IntakeHardware {
     public void setPollenRetrieval(boolean position) { // true for down, false for up
         if (position) {
             pollenRetrieval.setPosition(0); // Change to down position
-        } else if (!position) { // Has if statement in case argument was entered incorrectly
+        } else { // Has if statement in case argument was entered incorrectly
             pollenRetrieval.setPosition(1); // Change to up position
         }
     }
