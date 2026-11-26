@@ -20,14 +20,14 @@ public class TeleOpFlowerBoxFirstTest extends LinearOpMode {
                 robot.resetFlower();
             }
             // ------ Servo Movement ------
-            if (gamepad1.aWasPressed()) {
+            if (gamepad1.dpadDownWasPressed()) {
                 robot.servoTurn(0.09);
             }
             if (gamepad1.dpadUpWasPressed()){
                 robot.servoTurn(0);
             }
             // ------ Slider Movement ------
-            if (gamepad1.bWasPressed()) {
+            if (gamepad1.aWasPressed()) {
                 robot.slide(0,0.4);
                 robot.flowerEncoder();
             }
