@@ -17,7 +17,6 @@ public class TeleOpOfficial extends LinearOpMode{
         intake = new IntakeHardware(this);
         intake.intakeInitialize();
 
-
         waitForStart();
 
         while (opModeIsActive()){
@@ -25,9 +24,7 @@ public class TeleOpOfficial extends LinearOpMode{
             double straightPower = gamepad1.left_stick_y * -1;
             double rotatePower = gamepad1.right_stick_x;
             double sidePower = gamepad1.right_trigger - gamepad1.left_trigger;
-
             double intakeRotate = gamepad2.left_stick_y;
-
 
             // ------ Movement Calculations ------
             double leftFrontDrive = (straightPower + rotatePower + sidePower) * 0.6;

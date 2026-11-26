@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 
 public class FlowerBoxHardware {
     private DcMotor flowerBox;
-
     private Servo flowerBoxTip;
     private TouchSensor touchSensorFlowerBox;
     private LinearOpMode opMode; // This lets us use OpMode features like sleep()
@@ -32,7 +31,6 @@ public class FlowerBoxHardware {
 
         flowerBox.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flowerBox.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
     }
 
     // ====== Move Slider to Position ======
@@ -46,7 +44,7 @@ public class FlowerBoxHardware {
            setSlidePower(-sliderPower);
            while (opMode.opModeIsActive() && !(touchSensorFlowerBox.isPressed())){
                opMode.idle();
-            }
+           }
            stopFlower();
        } else {
             if (!touchSensorFlowerBox.isPressed()){
@@ -73,7 +71,6 @@ public class FlowerBoxHardware {
     }
 
     // TODO:  add boundaries like MIN_TICKS and MAX_TICKS so that we do not move out of range
-
     public void setSlidePower(double sliderPower) {
         if (touchSensorFlowerBox.isPressed() && sliderPower < 0) {
             flowerBox.setPower(0);
@@ -103,8 +100,6 @@ public class FlowerBoxHardware {
             opMode.telemetry.addData("Raw state", touchSensorFlowerBox.getValue());
             opMode.telemetry.update();
         }
-
-
     }
 
     public void resetFlower(){
