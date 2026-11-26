@@ -17,6 +17,7 @@ public class FlowerBoxHardware {
     private final double WHEEL_CIRCUMFERENCE = WHEEL_DIAMETER_MM * Math.PI;
     private final double TICKS_PER_MM = MOTOR_TICKS / WHEEL_CIRCUMFERENCE;
     private double TipAngle;
+    private double maxTicksSeen = 0; // largest encoder magnitude since last reset
 
     // ====== FLOWER BOX INIT ======
     public void flowerInitialize(){
@@ -41,18 +42,20 @@ public class FlowerBoxHardware {
             return;
         }
         if (position <= 0 ) {
-           setSlidePower(-sliderPower);
-           while (opMode.opModeIsActive() && !(touchSensorFlowerBox.isPressed())){
-               opMode.idle();
-           }
-           stopFlower();
-       } else {
+            setSlidePower(-sliderPower);
+            while (opMode.opModeIsActive() && !(touchSensorFlowerBox.isPressed())){
+                showSlideTelemetry();
+                opMode.idle();
+            }
+            stopFlower();
+        } else {
             if (!touchSensorFlowerBox.isPressed()){
                 slide(0, sliderPower);
             }
             resetFlower();
             setSlidePower(sliderPower);
             while (opMode.opModeIsActive() && Math.abs(flowerBox.getCurrentPosition()) < Math.abs(position * TICKS_PER_MM)){
+                showSlideTelemetry();
                 opMode.idle();
             }
             stopFlower();
@@ -62,22 +65,35 @@ public class FlowerBoxHardware {
 
     // ====== Turn Servo to Position ======
     public void servoTurn(double position){
-            // servo turns
-            flowerBoxTip.setPosition(position);
-            opMode.sleep(500);
+        // servo turns
+        flowerBoxTip.setPosition(position);
+        opMode.sleep(500);
     }
     public void stopFlower() {
         setSlidePower(0);
     }
 
-    // TODO:  add boundaries like MIN_TICKS and MAX_TICKS so that we do not move out of range
+    // TODO: add boundaries like MIN_TICKS and MAX_TICKS so that we do not move out of range
     public void setSlidePower(double sliderPower) {
         if (touchSensorFlowerBox.isPressed() && sliderPower < 0) {
             flowerBox.setPower(0);
         } else {
             flowerBox.setPower(sliderPower);
         }
+        if (sliderPower != 0) {
+            showSlideTelemetry();
+        }
     }
+
+    // Sends the live encoder count and the max reached to telemetry
+    private void showSlideTelemetry() {
+        double ticks = flowerBox.getCurrentPosition();
+        maxTicksSeen = Math.max(maxTicksSeen, Math.abs(ticks));
+        opMode.telemetry.addData("Flower encoder", ticks);
+        opMode.telemetry.addData("Max encoder seen", maxTicksSeen);
+        opMode.telemetry.update();
+    }
+
     // in getters you always should return the value
     // that is the point of getter -- to get some value from your class
     public void getAngle(){
@@ -93,8 +109,7 @@ public class FlowerBoxHardware {
             opMode.telemetry.addData("Button pressed", pressed);
             opMode.telemetry.addData("Raw state", touchSensorFlowerBox.getValue());
             opMode.telemetry.update();
-        }
-        else {
+        } else {
             boolean pressed = false;
             opMode.telemetry.addData("Button pressed", pressed);
             opMode.telemetry.addData("Raw state", touchSensorFlowerBox.getValue());
@@ -105,6 +120,7 @@ public class FlowerBoxHardware {
     public void resetFlower(){
         flowerBox.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flowerBox.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        maxTicksSeen = 0; // max is measured from the new zero
     }
     public void flowerEncoder(){
         opMode.telemetry.addData("Flower Box Motor Encoder: ",flowerBox.getCurrentPosition());
