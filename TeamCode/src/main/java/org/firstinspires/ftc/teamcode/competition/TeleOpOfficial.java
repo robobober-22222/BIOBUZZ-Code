@@ -28,7 +28,6 @@ public class TeleOpOfficial extends LinearOpMode{
 
             double intakeRotate = gamepad2.left_stick_y;
 
-
             // ------ Movement Calculations ------
             double leftFrontDrive = (straightPower + rotatePower + sidePower) * 0.6;
             double leftBackDrive = (straightPower + rotatePower - sidePower) * 0.6;
