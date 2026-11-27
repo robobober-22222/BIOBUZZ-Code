@@ -10,18 +10,19 @@ public class MaxServoPosition extends LinearOpMode {
 
     Servo IntakeServo;
     double position = 0;
-
+// 0.525 servo down
 
     @Override
     public void runOpMode() {
         IntakeServo = hardwareMap.get(Servo.class, "IntakeServo");
-
+        IntakeServo.scaleRange(-1,1);
+        IntakeServo.setPosition(0);
         waitForStart();
         while (opModeIsActive()) {
             if (gamepad1.aWasPressed()){
-                position -= 0.1;
-            } else if (gamepad1.bWasReleased()) {
-                position += 0.1;
+                position -= 0.05;
+            } else if (gamepad1.bWasPressed()) {
+                position += 0.05;
             }
             IntakeServo.setPosition(position);
             telemetry.addData("Servo",IntakeServo.getPosition());
