@@ -17,7 +17,7 @@ public class TeleOpIntake extends LinearOpMode {
         waitForStart();
         while (opModeIsActive()){
             double intakeRotate = -gamepad1.left_stick_y;
-            robot.intakeStart(intakeRotate*0.6);
+            robot.intakeStart(intakeRotate);
         }
     }
 }
