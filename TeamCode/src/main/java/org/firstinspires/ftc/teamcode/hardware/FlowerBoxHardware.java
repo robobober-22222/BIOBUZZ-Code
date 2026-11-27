@@ -81,7 +81,7 @@ public class FlowerBoxHardware {
             flowerBox.setPower(sliderPower);
         }
     }
-    // in getters you always should return the value
+    // in getters, you always should return the value
     // that is the point of getter -- to get some value from your class
     public void getAngle(){
         TipAngle = flowerBoxTip.getPosition();
